@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.preprocessing import MinMaxScaler, StandardScaler 
 df = pd.read_csv("D:/учеба/3 курс/ии/git1/my_ml_project/world_economics.csv")
 
-df = pd.read_csv('world_economics.csv') # загрузка данных
+df = pd.read_csv('D:/учеба/3 курс/ии/git1/my_ml_project/world_economics.csv') # загрузка данных
 print(df.info()) #информация о датасете
 print(df.dtypes) #типы данных
 
