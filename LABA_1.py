@@ -48,4 +48,5 @@ print(df.head())
 print(df.columns)  
 
 # сохраняем обработанные данные в CSV-файл
-df.to_csv("D:/учеба/3 курс/ии/git1/my_ml_project/processed_world_economics.csv", index=False) 
+df.to_csv("processed_world_economics.csv", index=False)  
+
