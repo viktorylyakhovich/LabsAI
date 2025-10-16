@@ -1,5 +1,5 @@
 import pandas as pd
-from sklearn.preprocessing import MinMaxScaler, StandardScaler 
+from sklearn.preprocessing import MinMaxScaler, StandardScaler  
 
 df = pd.read_csv('D:/учеба/3 курс/ии/git1/my_ml_project/world_economics.csv') # загрузка данных 
 print(df.info()) #информация о датасете
@@ -48,5 +48,4 @@ print(df.head())
 print(df.columns)  
 
 # сохраняем обработанные данные в CSV-файл
-df.to_csv("processed_world_economics.csv", index=False)  
-
+df.to_csv("processed_world_economics.csv", index=False)
