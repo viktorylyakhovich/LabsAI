@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.preprocessing import MinMaxScaler, StandardScaler  
 
 df = pd.read_csv('D:/учеба/3 курс/ии/git1/my_ml_project/world_economics.csv') # загрузка данных 
-print(df.info()) #информация о датасете
+print(df.info()) #информация о датасете 
 print(df.dtypes) #типы данных
 
 cols = df.columns # получение названий колонок
@@ -14,7 +14,7 @@ missing_values_count = nan_matrix.sum()
 print(missing_values_count) 
 
 # заполняем числовые столбцы (используем медиану для числовых данных)
-numeric_df = df.select_dtypes(include='number')
+numeric_df = df.select_dtypes(include='number') 
 for col in numeric_df.columns:
     if df[col].isnull().sum() > 0:
         age_median = df[col].median()
@@ -39,13 +39,12 @@ df[numeric_columns] = scaler_minmax.fit_transform(df[numeric_columns])
 print("\nДанные после нормализации:")
 print(df[numeric_columns].head()) 
 
-# преобразование категориальных данных
-categorical_columns = df.select_dtypes(include=['object']).columns
-df = pd.get_dummies(df, columns=categorical_columns, drop_first=True)
+# преобразование категориальных данных 
+#categorical_columns = df.select_dtypes(include=['object']).columns
+df = pd.get_dummies(df, columns=['region'], drop_first=True) 
 
 print("\nДанные после преобразования категориальных признаков:")
-print(df.head()) 
-print(df.columns)  
+print(df.head())  
 
 # сохраняем обработанные данные в CSV-файл
-df.to_csv("processed_world_economics.csv", index=False)
+df.to_csv("D:/учеба/3 курс/ии/git1/my_ml_project/processed_world_economics.csv", index=False) 
