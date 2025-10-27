@@ -8,7 +8,10 @@ confusion_matrix, classification_report, root_mean_squared_error,
 mean_absolute_error, r2_score)
 from sklearn.preprocessing import StandardScaler
 
-df = pd.read_csv('D:/учеба/3 курс/ии/git1/my_ml_project/processed_world_economics.csv') 
+dff = pd.read_csv('D:/учеба/3 курс/ии/git1/my_ml_project/processed_world_economics.csv') 
+
+# Оставляем только числовые поля
+df = dff.select_dtypes(include=['number'])  
 
 # 1. Задача регрессии 
 X = df.drop('area', axis=1)  
@@ -28,22 +31,8 @@ print(f'MAE: {mean_absolute_error(y_test, y_pred_lin):.2f}')
 print(f'RMSE: {root_mean_squared_error(y_test, y_pred_lin):.2f}')
 print(f'MSE: {mean_squared_error(y_test, y_pred_lin):.2f}') 
 
-# Масштабирование признаков
-scaler = StandardScaler()
-X_train_scaled = scaler.fit_transform(X_train)
-X_test_scaled = scaler.transform(X_test)
-
-# Lasso регрессия (отбор признаков) 
-lasso = LassoCV(cv=5, random_state=42) 
-lasso.fit(X_train_scaled, y_train)
-y_pred_lasso = lasso.predict(X_test_scaled)
-
-print('\nLasso регрессия:')   
-print(f'R^2: {r2_score(y_test, y_pred_lasso):.3f}')  
-print(f'RMSE: {root_mean_squared_error(y_test, y_pred_lasso):.3f}') 
-
 # 2. Задача классификации 
-median_train = y_train.median()     
+median_train = y_train.median()       
 y_train_class = (y_train > median_train).astype(int)   
 y_test_class = (y_test > median_train).astype(int)    
 
