@@ -11,8 +11,8 @@ dff = pd.read_csv('D:/учеба/3 курс/ии/git1/my_ml_project/processed_wo
 
 # Создаем бинарный признак для классификации на основе GDP
 median_gdp = dff['GDP'].median()
-dff['High_GDP'] = (dff['GDP'] > median_gdp).astype(int)
-
+dff['High_GDP'] = (dff['GDP'] > median_gdp).astype(int) 
+ 
 df = dff.select_dtypes(include=['number'])  
 
 # Определяем целевые переменные
