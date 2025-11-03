@@ -1,4 +1,5 @@
 import pandas as pd 
+import numpy as np 
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import seaborn as sns 
@@ -11,14 +12,16 @@ from sklearn.preprocessing import StandardScaler
 dff = pd.read_csv('D:/учеба/3 курс/ии/git1/my_ml_project/processed_world_economics.csv') 
 
 # Оставляем только числовые поля
-df = dff.select_dtypes(include=['number'])  
+df = dff.select_dtypes(include=['number'])   
 
 # 1. Задача регрессии 
-X = df.drop('area', axis=1)  
-y = df['area']  
+X = df.drop(['GDP'], axis=1)    
+y = df['GDP'] 
+
+print(list(X)) 
 
 # Разделение на обучающую и тестовую выборки
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42) 
 
 # Линейная регрессия
 linear_model = LinearRegression() 
@@ -41,14 +44,14 @@ logreg_model = LogisticRegression()
 logreg_model.fit(X_train, y_train_class)  
 y_pred_log = logreg_model.predict(X_test)  
 
-print("\nЛогистическая регрессия:")
+print("\nЛогистическая регрессия:") 
 print(f'Accuracy: {accuracy_score(y_test_class, y_pred_log):.2f}')   
 print(f'Classification Report:\n{classification_report(y_test_class, y_pred_log)}')  
 
 # Матрица ошибок для классификации 
 cm = confusion_matrix(y_test_class, y_pred_log)  
-plt.figure(figsize=(6, 5)) 
-sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=['Маленькая площадь', 'Большая площадь'], yticklabels=['Маленькая площадь', 'Большая площадь']) 
+plt.figure(figsize=(5, 4)) 
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=['Низкий ВВП', 'Высокий ВВП'], yticklabels=['Низкий ВВП', 'Высокий ВВП']) 
 plt.title('Confusion Matrix - Логистическая регрессия')  
 plt.xlabel('Predicted Label')
 plt.ylabel('True Label')
