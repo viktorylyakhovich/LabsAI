@@ -54,8 +54,6 @@ X_clf_train, X_clf_test, y_clf_train, y_clf_test = train_test_split(X_clf, y_clf
 dt_classifier_model = DecisionTreeClassifier(max_depth=4, max_leaf_nodes = 10, random_state=42)
 dt_classifier_model.fit(X_clf_train, y_clf_train)
 
-print("Классы модели:", dt_classifier_model.classes_)
-
 y_clf_pred = dt_classifier_model.predict(X_clf_test)
 y_proba = dt_classifier_model.predict_proba(X_clf_test)
 
