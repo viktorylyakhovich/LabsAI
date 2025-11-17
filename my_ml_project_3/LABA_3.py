@@ -51,7 +51,7 @@ y_clf = df[class_target]
 X_clf_train, X_clf_test, y_clf_train, y_clf_test = train_test_split(X_clf, y_clf, test_size=0.3, random_state=42, stratify=y_clf)
 
 # Модель классификации
-dt_classifier_model = DecisionTreeClassifier(max_depth=4, max_leaf_nodes = 10, random_state=42)
+dt_classifier_model = DecisionTreeClassifier(max_depth=6, max_leaf_nodes = 5, random_state=42)
 dt_classifier_model.fit(X_clf_train, y_clf_train)
 
 y_clf_pred = dt_classifier_model.predict(X_clf_test)
