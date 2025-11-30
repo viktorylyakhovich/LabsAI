@@ -29,7 +29,7 @@ y = df[target_column]
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=42, stratify=y)
 
 # СЛУЧАЙНЫЙ ЛЕС С OOB ОЦЕНКОЙ
-rf_model = RandomForestClassifier(n_estimators=100, max_depth=4, oob_score=True, random_state=42)
+rf_model = RandomForestClassifier(n_estimators=200, max_depth=6, oob_score=True, random_state=42)
 rf_model.fit(X_train, y_train)
 y_pred_rf = rf_model.predict(X_test)
 y_pred_proba_rf = rf_model.predict_proba(X_test)[:, 1]
@@ -53,7 +53,7 @@ print("\nClassification Report:")
 print(classification_report(y_test, y_pred_ada))
 
 # ГРАДИЕНТНЫЙ БУСТИНГ
-gb_model = GradientBoostingClassifier(n_estimators=100, max_depth=4, random_state=42)
+gb_model = GradientBoostingClassifier(n_estimators=200, max_depth=4, random_state=42)
 gb_model.fit(X_train, y_train)
 y_pred_gb = gb_model.predict(X_test)
 y_pred_proba_gb = gb_model.predict_proba(X_test)[:, 1]
