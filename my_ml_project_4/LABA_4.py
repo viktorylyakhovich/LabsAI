@@ -53,7 +53,7 @@ print("\nClassification Report:")
 print(classification_report(y_test, y_pred_ada))
 
 # ГРАДИЕНТНЫЙ БУСТИНГ
-gb_model = GradientBoostingClassifier(n_estimators=200, max_depth=4, random_state=42)
+gb_model = GradientBoostingClassifier(n_estimators=200, max_depth=4, learning_rate=0.05, subsample=0.8, random_state=42) 
 gb_model.fit(X_train, y_train)
 y_pred_gb = gb_model.predict(X_test)
 y_pred_proba_gb = gb_model.predict_proba(X_test)[:, 1]
